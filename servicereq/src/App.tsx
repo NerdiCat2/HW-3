@@ -36,7 +36,7 @@ const OrderEquipment: React.FC = () => {
         const newOrder = [staffName, patientRoom, equipment, priority, assign, other];
         console.log(newOrder);
         if (staffName == "" || patientRoom == "" || equipment == "" || priority == "" || assign == "") {
-            alert("Please Fill out the Patient Name and Room Number");
+            alert("Please fill out all form parameters");
             return;
         }
         setOrders((currentOrders) => [...currentOrders, newOrder]);
