@@ -14,7 +14,6 @@ import TableBody from '@mui/material/TableBody';
 //import { useFormData } from "./useFormData";
 //import {Simulate} from "react-dom/test-utils";
 //import submit = Simulate.submit;
-const orders:string[][] = [[]];
 const OrderEquipment: React.FC = () => {
     const [staffName, setStaffName] = useState("");
     const [patientRoom, setPatientRoom] = useState("");
@@ -34,19 +33,26 @@ const OrderEquipment: React.FC = () => {
       };*/
 
     async function submit() {
-        const temp = [staffName, patientRoom, equipment, priority, assign, other];
-        console.log(temp);
+        const newOrder = [staffName, patientRoom, equipment, priority, assign, other];
+        console.log(newOrder);
         if (staffName == "" || patientRoom == "" || equipment == "" || priority == "" || assign == "") {
             alert("Please Fill out the Patient Name and Room Number");
             return;
         }
-        orders.push(temp);
+        setOrders((currentOrders) => [...currentOrders, newOrder]);
+        setPriority('');
+        setAssign('');
+        setPatientRoom('');
+        setStaffName('');
+        setOther('');
+        setEquipment('');
         return;
     }
     const [priority, setPriority] = React.useState('');
     const [equipment, setEquipment] = React.useState('');
     const [other, setOther] = React.useState('');
     const [assign, setAssign] = React.useState('');
+    const [orders, setOrders] = React.useState<string[][]>([]);
     const handleChange = (event: SelectChangeEvent) => {
         setEquipment(event.target.value as string);
     };
@@ -219,17 +225,15 @@ const OrderEquipment: React.FC = () => {
                     </button>
                 </div>
                 <div className="formGroup">
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 300 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>Staff Name</TableCell>
-                                <TableCell align="center">xcoord</TableCell>
-                                <TableCell align="center">ycoord</TableCell>
-                                <TableCell align="center">floor</TableCell>
-                                <TableCell align="center">building</TableCell>
-                                <TableCell align="center">nodeType</TableCell>
-                                <TableCell align="center">longName</TableCell>
-                                <TableCell align="center">shortName</TableCell>
+                                <TableCell align="center">Staff Name</TableCell>
+                                <TableCell align="center">Room Number</TableCell>
+                                <TableCell align="center">Short Med Equip</TableCell>
+                                <TableCell align="center">Priority</TableCell>
+                                <TableCell align="center">Assignment</TableCell>
+                                <TableCell align="center">Short Other</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
