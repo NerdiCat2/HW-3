@@ -7,14 +7,14 @@ body {
 
 .container {
   position: absolute;
-  top: 59%;
+  top: 49%;
   left: 50%; /* Center the container horizontally */
   transform: translate(
           -50%,
           -50%
   ); /* Adjust horizontal centering with transform */
   width: 50%; /* 53.4% of the parent element's width */
-  height: 80%;
+  height: 90%;
   background: #ffffff;
 
   box-sizing: border-box;
@@ -25,7 +25,7 @@ body {
 
   min-width: 300px; /* This is the typical smallest screen size you would design for */
   min-height: 50vh;
-  max-height: 550px; /* Minimum height set to 50% of the viewport height */
+  max-height: 700px; /* Minimum height set to 50% of the viewport height */
   /* Allows vertical scrolling if the content is taller than the container */
   overflow-y: auto;
   padding: 1.25rem 2rem;
@@ -115,7 +115,7 @@ body {
 
 .buttonGroup {
   display: flex;
-  justify-content: space-between; /* Place the children at the start and end of the container */
+  justify-content: center; /* Place the children at the start and end of the container */
   width: 100%; /* Take up full width of the parent container */
   /* Remove gap if you want the buttons to align exactly at the ends */
   flex-wrap: wrap;
@@ -167,6 +167,12 @@ body {
 }
 .button:first-child {
   margin-left: 0;
+}
+
+.select {
+  min-width: 100px;
+  max-width: 200px;
+  color: #000000;
 }
 
 @media (max-width: 1104px) {
